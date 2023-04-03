@@ -1,4 +1,4 @@
-type state = | Q0 | Q1 | Q2 | Q3 | Q4 | Q5
+ㅣㄴ여ㅜㄷtype state = | Q0 | Q1 | Q2 | Q3 | Q4 | Q5
 
 let transfer (st : state) (c : char) = 
     match st, c with
@@ -37,4 +37,28 @@ let tokenize (str : string) : string list =
             in
             tokenize' char_lst Q0 "" []
 
-let lex_to_expr _  = failwith "not implemented"
+(* let lex_to_expr _  = failwith "not implemented" *)
+
+type op = ADD | SUB | MUL | DIV
+
+type value =
+    | Int of int
+    | Float of float
+
+type expr =
+    | E of op * expr * expr
+    | V of value
+
+let lex_to_expr (str : string) =
+    let str_lst = tokenize str in
+        let rec lex_to_expr' str_lst =
+        match str_lst with
+        | fst::"+"::other -> E (ADD, V (Int (int_of_string fst)), lex_to_expr' other)
+        | fst::"-"::other -> E (SUB, V (Int (int_of_string fst)), lex_to_expr' other)
+        | fst::"*"::other -> E (MUL, V (Int (int_of_string fst)), lex_to_expr' other)
+        | fst::"/"::other -> E (DIV, V (Int (int_of_string fst)), lex_to_expr' other)
+        | fst::_ -> V(Int (int_of_string fst))
+        | [] -> failwith "rejected"
+        in
+        lex_to_expr' str_lst
+        
