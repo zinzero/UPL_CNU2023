@@ -1,4 +1,4 @@
-ㅣㄴ여ㅜㄷtype state = | Q0 | Q1 | Q2 | Q3 | Q4 | Q5
+type state = | Q0 | Q1 | Q2 | Q3 | Q4 | Q5
 
 let transfer (st : state) (c : char) = 
     match st, c with

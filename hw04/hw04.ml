@@ -35,8 +35,8 @@ let rec eval (e : expr) =
                 match (eval n1), (eval n2) with
                 | Int i1, Int i2 -> Int (i1 - i2)
                 | Float f1, Float f2 -> Float (f1 -. f2)
-                | Int i, Float f
-                | Float f, Int i -> Float ((float_of_int i) -. f)
+                | Int i, Float f -> Float ((float_of_int i) -. f)
+                | Float f, Int i -> Float (f  -. (float_of_int i))
                 | _, Err -> Err
                 | Err, _ -> Err
             end
@@ -57,8 +57,8 @@ let rec eval (e : expr) =
                 | _, Float 0.0 -> Err
                 | Int i1, Int i2 -> Int (i1 / i2)
                 | Float f1, Float f2 -> Float (f1 /. f2)
-                | Int i, Float f
-                | Float f, Int i -> Float ((float_of_int i) /. f)
+                | Int i, Float f -> Float ((float_of_int i) /. f)
+                | Float f, Int i -> Float (f /. (float_of_int i))
                 | _, Err -> Err
                 | Err, _ -> Err
             end
