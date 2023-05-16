@@ -1,3 +1,14 @@
 (include_subdirs unqualified)
-(executable
-(name hw09))
+(library
+(name hw09)
+(modules hw09 store fstore)
+(libraries ast))
+
+(library
+(name ast)
+(modules ast))
+
+(library
+(name parserMain)
+(modules parserMain parser lexer)
+(libraries ast))
