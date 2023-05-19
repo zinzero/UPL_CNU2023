@@ -1,0 +1,20 @@
+type token =
+    RIGHT_PARENTHESIS
+  | PLUS
+  | NUMBER of int
+  | NEG
+  | MINUS
+  | LEFT_PARENTHESIS
+  | KW_LET
+  | KW_IN
+  | KW_FUN
+  | ID of string
+  | EQ
+  | EOF
+  | ARROW
+val menhir_begin_marker : int
+val xv_var_list : string list
+val xv_parse : Ast.expr
+val xv_paren_expr : Ast.expr
+val xv_expr : Ast.expr
+val menhir_end_marker : int
