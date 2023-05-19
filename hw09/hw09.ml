@@ -38,4 +38,3 @@ let interp_prog (prog : Ast.prog) : Store.value =
         | fst::other -> let ongoing = interp_def fst fstore in def_fstore other ongoing in
     match prog with
     | Prog (fundef, expr) -> let prog_fstore = def_fstore fundef [] in interp_expr expr prog_fstore []
-            
