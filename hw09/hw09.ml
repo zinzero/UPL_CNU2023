@@ -28,7 +28,7 @@ let rec interp_expr (expr : Ast.expr) (fstore : Fstore.t) (store : Store.t) : St
             match called_fun with
             | (arg_lst, body) -> 
                 if (List.length arg_lst) = (List.length expr_lst) 
-                then let mid_store = ast2call arg_lst expr_lst [] in interp_expr body fstore mid_store
+                then let mid_store = ast2call arg_lst expr_lst store in interp_expr body fstore mid_store
                 else failwith ("[Error] Unmatched the number of arguments")
 
 let interp_prog (prog : Ast.prog) : Store.value =
