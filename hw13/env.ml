@@ -8,5 +8,5 @@ let add (va : string) (addr' : addr) (env : t) : t =
 
 let rec find (va : string) (env : t) : addr =
     match env with
-    | (va', addr')::other -> if va' = va then addr' else fine va other
+    | (va', addr')::other -> if va' = va then addr' else find va other
     | [] -> failwith ("[Error] Free identifier: " ^ va)

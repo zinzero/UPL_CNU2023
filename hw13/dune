@@ -1,32 +1,32 @@
 (include_subdirs unqualified)
 
 (library
-(name hw13)
-(modules hw13)
-(libraries ParserMain AddrManager Env Memory Value Ast))
+ (name hw13)
+ (modules hw13)
+ (libraries ParserMain AddrManager Env Memory Value Ast))
+
+(library 
+ (name ParserMain) 
+ (modules ParserMain Parser Lexer)
+ (libraries Ast))
+
+(library 
+ (name AddrManager) 
+ (modules AddrManager))
+
+(library 
+ (name Env) 
+ (modules Env))
 
 (library
-(name ParserMain)
-(modules ParserMain Parser Lexer)
-(libraries Ast))
+ (name Memory)
+ (modules Memory)
+ (libraries Env Value))
 
 (library
-(name AddrManager)
-(modules AddrManager))
+ (name Value)
+ (modules Value))
 
 (library
-(name Env)
-(modules Env))
-
-(library
-(name Memory)
-(modules Memory))
-
-(library
-(name Value)
-(modules Value))
-
-(library
-(name Ast)
-(modules Ast))
-
+ (name Ast)
+ (modules Ast))
